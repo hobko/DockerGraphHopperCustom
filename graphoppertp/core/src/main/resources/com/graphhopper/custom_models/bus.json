@@ -1,0 +1,37 @@
+// to use this custom model you need to set the following option in the config.yml
+// graph.vehicles: roads|transportation_mode=BUS,car
+// graph.encoded_values: max_width,max_height
+// profiles:
+//    - name: bus
+//      vehicle: roads
+//      weighting: custom
+//      custom_model_files: [bus.json]
+
+{
+  "distance_influence": 1,
+  "areas": {
+    "preferred_area": {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [18.818668, 49.21614],
+            [18.835269, 49.21614],
+            [18.835269, 49.22299],
+            [18.818668, 49.22299],
+            [18.818668, 49.21614]
+          ]
+        ]
+      }
+    }
+  },
+  "priority": [
+    { "if": "in_preferred_area", "multiply_by": 0.1 },
+    { "else": "", "multiply_by": 10 }
+  ],
+  "speed": [
+    { "if": "in_preferred_area", "multiply_by": 1.2 }
+  ]
+}

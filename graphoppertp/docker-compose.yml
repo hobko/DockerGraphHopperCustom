@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  graphhopper:
+    build:
+      context: ../graphoppertp
+      dockerfile: ../graphoppertp/Dockerfile
+    ports:
+      - "8989:8989"
+      - "8990:8990"
+    networks:
+      - tp-network
+
+networks:
+  tp-network:
+    driver: bridge
